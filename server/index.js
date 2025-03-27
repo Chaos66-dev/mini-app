@@ -2,4 +2,4 @@ const server = require('./src/server.js')
 
 const port = 8081
 
-server.listen(port, () => console.log(`Express server listening on ${port}`))
+server.listen(port, '0.0.0.0', () => console.log(`Express server listening on ${port}`))
