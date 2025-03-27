@@ -1,0 +1,33 @@
+#root {
+  margin: 0 0;
+  text-align: center;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  grid-row: 1;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main {
+  grid-row: 2;
+  /* background-color: red; */
+}
+
+.movie-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
