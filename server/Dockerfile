@@ -10,4 +10,4 @@ RUN npm install
 
 EXPOSE 8081
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npx knex migrate:rollback --all && npx knex migrate:latest && npx knex seed:run && npm start"]

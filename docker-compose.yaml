@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  client:
+    build: ./client
+    image: mini_client_image
+    container_name: mini_client_container
+    volumes:
+      - ./client/src:/app/src
+    ports:
+      - 8080:5173
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    image: mini_server_image
+    container_name: mini_server_container
+    volumes:
+      - ./server/src:/server/src
+    env_file:
+      - ./server/.env
+    ports:
+      - 8081:8081
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:latest
+    container_name: mini_pg_databse
+    env_file:
+      - ./server/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
